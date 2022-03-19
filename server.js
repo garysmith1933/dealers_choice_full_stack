@@ -2,6 +2,7 @@
 const Sequelize = require("sequelize")
 const sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://localhost/dealers_choice_full_stack")
 const { STRING } = Sequelize
+const faker = require("faker")
 
 
 const Entrant = sequelize.define('entrant', {
@@ -23,9 +24,11 @@ const Entrant = sequelize.define('entrant', {
 const express = require('express');
 const app = express();
 const path = require('path');
+app.use(express.json())
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
+
 
 app.get("/api/entrants", async(req,res,next) => {
     try {
@@ -34,6 +37,16 @@ app.get("/api/entrants", async(req,res,next) => {
         next(err)
     }
 })
+
+//faker is probably off here.
+app.post("/api/entrants", async(req,res,next)=> {
+    try {
+         res.send(await Entrant.create(req.body))
+    } catch(err) {
+        next(err)
+    }
+})
+
 
 
 
