@@ -2,8 +2,6 @@
 const Sequelize = require("sequelize")
 const sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://localhost/dealers_choice_full_stack")
 const { STRING } = Sequelize
-const faker = require("faker")
-
 
 const Entrant = sequelize.define('entrant', {
     name: {
@@ -41,14 +39,22 @@ app.get("/api/entrants", async(req,res,next) => {
 //faker is probably off here.
 app.post("/api/entrants", async(req,res,next)=> {
     try {
-         res.send(await Entrant.create(req.body))
+         res.status(201).send(await Entrant.create(req.body))
     } catch(err) {
         next(err)
     }
 })
 
-
-
+app.delete('/api/entrants/:id', async(req, res, next)=>{
+  try {
+    const entrant = await Entrant.findByPk(req.params.id);
+    await entrant.destroy();
+    res.sendStatus(204);
+  }
+  catch(ex){
+    next(ex);
+  }
+});
 
 const syncAndSeed = async() => {
     await sequelize.sync({force: true}) 
