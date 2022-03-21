@@ -36,7 +36,7 @@ class Create extends Component {
             <form onSubmit={submit}>
                 <input onChange={ ev => this.setState({name: ev.target.value})} name='name' placeholder='Full name' value={name}/>
                 <input  onChange={ ev => this.setState({gamerTag: ev.target.value})}name='gamertag' placeholder='GamerTag' value={gamerTag}/>
-                <button id='button' disabled={!name || !gamerTag}>Add new entry!</button>
+                <button id='button' disabled={!name || !gamerTag}>Register</button>
             </form>
             )
     }

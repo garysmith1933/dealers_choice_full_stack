@@ -17,7 +17,7 @@ export default class App extends Component {
     render() {
 
         return (
-                <div>
+                <div className = 'main' >
                     <h1> Monthly Smash Tournament! </h1>
                 <Route exact path="/" component={Entrants}/>
                 <Route path='/entrants/:id' component={Entrant}/>

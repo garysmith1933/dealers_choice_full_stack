@@ -9,8 +9,9 @@ const Entrants = ({entrants, withdraw}) => {
     return (
        
         <div>
-        <h3> Current Entrants </h3>
+        <h3> Register here </h3>
         <Create/>
+             <h4> Current Entrants </h4>
         {
             entrants.map(entrant => {
                 return (
