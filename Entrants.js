@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getEntrants, deleteEntrant} from "./store"
 import {Link} from "react-router-dom"
+import Create from "./Create"
 
 
 const Entrants = ({entrants, withdraw}) => {
@@ -9,7 +10,7 @@ const Entrants = ({entrants, withdraw}) => {
        
         <div>
         <h3> Current Entrants </h3>
-     
+        <Create/>
         {
             entrants.map(entrant => {
                 return (

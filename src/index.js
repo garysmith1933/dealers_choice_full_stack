@@ -5,7 +5,7 @@ import {Provider} from "react-redux"
 import Entrants from "../Entrants"
 import {HashRouter, Link, Route, Switch} from "react-router-dom"
 import Entrant from "../Entrant"
-import Create from "../Create"
+
 
 
 
@@ -19,7 +19,6 @@ export default class App extends Component {
         return (
                 <div>
                     <h1> Monthly Smash Tournament! </h1>
-                    <Create/>
                 <Route exact path="/" component={Entrants}/>
                 <Route path='/entrants/:id' component={Entrant}/>
                

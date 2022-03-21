@@ -30,7 +30,7 @@ export const getEntrants = () => {
     }
 }
 
-//something may be off
+
 export const createEntrant = (entrant) => {
     return async(dispatch) => {
         let response = await axios.post("/api/entrants", entrant)
